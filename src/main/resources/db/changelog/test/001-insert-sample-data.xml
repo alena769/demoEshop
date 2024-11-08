@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+<changeSet id="1" author="abelikova">
+    <insert tableName="users">
+        <column name="username" value="test"/>
+        <column name="password" value="test"/>
+        <column name="role" value="USER"/>
+    </insert>
+    <insert tableName="products">
+        <column name="name" value="Smartphone"/>
+        <column name="description" value="Latest model with 5G support"/>
+        <column name="price" value="699.99"/>
+        <column name="stock" value="50"/>
+        <column name="category" value="Electronics"/>
+        <column name="brand" value="BrandA"/>
+        <column name="rating" value="4.5"/>
+        <column name="discount" value="10.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Laptop"/>
+        <column name="description" value="Lightweight laptop with high performance"/>
+        <column name="price" value="1199.99"/>
+        <column name="stock" value="30"/>
+        <column name="category" value="Electronics"/>
+        <column name="brand" value="BrandB"/>
+        <column name="rating" value="4.8"/>
+        <column name="discount" value="5.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Wireless Headphones"/>
+        <column name="description" value="Noise-canceling wireless headphones"/>
+        <column name="price" value="199.99"/>
+        <column name="stock" value="100"/>
+        <column name="category" value="Electronics"/>
+        <column name="brand" value="BrandC"/>
+        <column name="rating" value="4.6"/>
+        <column name="discount" value="15.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Smartwatch"/>
+        <column name="description" value="Fitness tracking smartwatch with GPS"/>
+        <column name="price" value="249.99"/>
+        <column name="stock" value="75"/>
+        <column name="category" value="Wearables"/>
+        <column name="brand" value="BrandD"/>
+        <column name="rating" value="4.3"/>
+        <column name="discount" value="0.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="4K TV"/>
+        <column name="description" value="55-inch 4K Ultra HD Smart TV"/>
+        <column name="price" value="599.99"/>
+        <column name="stock" value="20"/>
+        <column name="category" value="Home Entertainment"/>
+        <column name="brand" value="BrandE"/>
+        <column name="rating" value="4.7"/>
+        <column name="discount" value="10.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Gaming Console"/>
+        <column name="description" value="Next-gen gaming console with 1TB storage"/>
+        <column name="price" value="499.99"/>
+        <column name="stock" value="40"/>
+        <column name="category" value="Gaming"/>
+        <column name="brand" value="BrandF"/>
+        <column name="rating" value="4.9"/>
+        <column name="discount" value="5.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Tablet"/>
+        <column name="description" value="10-inch tablet with stylus support"/>
+        <column name="price" value="329.99"/>
+        <column name="stock" value="60"/>
+        <column name="category" value="Electronics"/>
+        <column name="brand" value="BrandG"/>
+        <column name="rating" value="4.4"/>
+        <column name="discount" value="7.5"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Bluetooth Speaker"/>
+        <column name="description" value="Portable Bluetooth speaker with deep bass"/>
+        <column name="price" value="79.99"/>
+        <column name="stock" value="150"/>
+        <column name="category" value="Audio"/>
+        <column name="brand" value="BrandH"/>
+        <column name="rating" value="4.6"/>
+        <column name="discount" value="20.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="Digital Camera"/>
+        <column name="description" value="20MP DSLR camera with 4K video recording"/>
+        <column name="price" value="899.99"/>
+        <column name="stock" value="25"/>
+        <column name="category" value="Photography"/>
+        <column name="brand" value="BrandI"/>
+        <column name="rating" value="4.5"/>
+        <column name="discount" value="0.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+    <insert tableName="products">
+        <column name="name" value="E-Reader"/>
+        <column name="description" value="E-Reader with adjustable backlight and 8GB storage"/>
+        <column name="price" value="129.99"/>
+        <column name="stock" value="120"/>
+        <column name="category" value="Electronics"/>
+        <column name="brand" value="BrandJ"/>
+        <column name="rating" value="4.2"/>
+        <column name="discount" value="10.0"/>
+        <column name="is_active" value="true"/>
+    </insert>
+
+</changeSet>
+</databaseChangeLog>
