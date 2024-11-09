@@ -9,7 +9,6 @@
     <insert tableName="users">
         <column name="username" value="test"/>
         <column name="password" value="test"/>
-        <column name="role" value="USER"/>
     </insert>
     <insert tableName="products">
         <column name="name" value="Smartphone"/>
