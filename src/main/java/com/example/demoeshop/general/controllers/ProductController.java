@@ -6,6 +6,7 @@ import com.example.demoeshop.general.services.product.ProductService;
 import com.example.demoeshop.general.services.product.ProductInventoryService;
 import com.example.demoeshop.general.services.product.ProductPricingService;
 import com.example.demoeshop.general.services.product.ProductReviewService;
+import com.example.demoeshop.shared.exeption.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -79,17 +80,43 @@ public class ProductController {
     }
 
     @PostMapping("/{id}/applyDiscount")
-    public void applyDiscount(@PathVariable Long id, @RequestParam double discountPercentage) {
-        productPricingService.applyDiscount(id, discountPercentage);
+    public ResponseEntity<Product> applyDiscount(
+            @PathVariable Long id,
+            @RequestParam double discountAmount) {
+
+        Product product = productService.getProductById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        productService.applyDiscount(product, discountAmount);
+
+        return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/{id}/adjustInventory")
+    public ResponseEntity<Product> adjustInventory(
+            @PathVariable Long id,
+            @RequestParam int quantityChange) {
+
+        Product product = productService.getProductById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        productService.adjustInventory(product, quantityChange);
+
+        return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/{id}/addReview")
+    public ResponseEntity<Product> addRating(
+            @PathVariable Long id,
+            @RequestParam double rating) {
+
+        Product product = productService.getProductById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        productService.addReview(product, rating);
+
+        return ResponseEntity.ok(product);
     }
 
     @GetMapping("/{id}/rating")
     public double getAverageRating(@PathVariable Long id) {
         return productReviewService.getAverageRating(id);
-    }
-
-    @PostMapping("/{id}/rating")
-    public void addRating(@PathVariable Long id, @RequestParam double rating) {
-        productReviewService.addRating(id, rating);
     }
 }

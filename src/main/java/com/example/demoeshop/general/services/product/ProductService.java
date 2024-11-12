@@ -13,4 +13,7 @@ public interface ProductService {
     List<Product> getAllProducts();
     Optional<Product> getProductById(Long id);
     Product updateProduct(Long id, Product productDetails);
+    void applyDiscount(Product product, double discountAmount);
+    void adjustInventory(Product product, int quantityChange);
+    void addReview(Product product, double rating);
 }

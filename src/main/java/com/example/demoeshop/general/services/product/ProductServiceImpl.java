@@ -3,6 +3,7 @@ package com.example.demoeshop.general.services.product;
 import com.example.demoeshop.general.dto.ProductFilter;
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.repositories.ProductRepository;
+import com.example.demoeshop.general.services.product.strategy.ProductStrategyFactory;
 import com.example.demoeshop.general.services.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final ProductStrategyFactory strategyFactory;
 
     @Override
     public List<Product> getAllProducts() {
@@ -67,4 +69,33 @@ public class ProductServiceImpl implements ProductService {
 
         return productRepository.findAll(spec);
     }
+
+    @Override
+    public void applyDiscount(Product product, double discountAmount) {
+        ProductContext productContext = new ProductContext();
+        productContext.setPricingStrategy(strategyFactory.getPricingStrategy(discountAmount));
+
+        productContext.applyPricing(product);
+        productRepository.save(product);
+    }
+
+    @Override
+    public void adjustInventory(Product product, int quantityChange) {
+        ProductContext productContext = new ProductContext();
+        productContext.setInventoryStrategy(strategyFactory.getInventoryStrategy());
+
+        productContext.adjustInventory(product, quantityChange);
+        productRepository.save(product);
+    }
+
+    @Override
+    public void addReview(Product product, double rating) {
+        ProductContext productContext = new ProductContext();
+        productContext.setReviewStrategy(strategyFactory.getReviewStrategy());
+
+        // Apply review strategy
+        productContext.addReview(product, rating);
+        productRepository.save(product);
+    }
+
 }

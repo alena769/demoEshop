@@ -26,12 +26,4 @@ public class ProductPricingServiceImpl implements ProductPricingService {
         product.setPrice(newPrice);
         productRepository.save(product);
     }
-
-    @Override
-    public void applyDiscount(Long productId, double discountPercentage) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
-        product.setDiscount(discountPercentage);
-        productRepository.save(product);
-    }
 }
