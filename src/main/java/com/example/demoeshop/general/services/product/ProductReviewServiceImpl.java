@@ -1,4 +1,4 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.product;
 
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.repositories.ProductRepository;
@@ -8,30 +8,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ProductPricingServiceImpl implements ProductPricingService {
+public class ProductReviewServiceImpl implements ProductReviewService {
 
     private final ProductRepository productRepository;
 
     @Override
-    public double calculateDiscountedPrice(Long productId) {
+    public double getAverageRating(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
-        return product.getPrice() * (1 - product.getDiscount() / 100);
+        return product.getRating();
     }
 
     @Override
-    public void updatePrice(Long productId, double newPrice) {
+    public void addRating(Long productId, double rating) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
-        product.setPrice(newPrice);
-        productRepository.save(product);
-    }
-
-    @Override
-    public void applyDiscount(Long productId, double discountPercentage) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new ProductNotFoundException("Product not found"));
-        product.setDiscount(discountPercentage);
+        double newRating = (product.getRating() + rating) / 2; // Simple average calculation
+        product.setRating(newRating);
         productRepository.save(product);
     }
 }

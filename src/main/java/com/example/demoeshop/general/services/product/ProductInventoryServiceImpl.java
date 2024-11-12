@@ -1,4 +1,4 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.product;
 
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.repositories.ProductRepository;

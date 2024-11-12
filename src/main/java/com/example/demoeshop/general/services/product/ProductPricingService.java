@@ -1,4 +1,4 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.product;
 
 public interface ProductPricingService {
     double calculateDiscountedPrice(Long productId);

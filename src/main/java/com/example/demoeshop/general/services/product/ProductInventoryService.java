@@ -1,4 +1,4 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.product;
 
 public interface ProductInventoryService {
     int getStockLevel(Long productId);

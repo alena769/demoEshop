@@ -1,4 +1,4 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.specification;
 import com.example.demoeshop.general.model.Product;
 import org.springframework.data.jpa.domain.Specification;
 

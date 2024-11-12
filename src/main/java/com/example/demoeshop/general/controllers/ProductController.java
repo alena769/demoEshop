@@ -2,10 +2,10 @@ package com.example.demoeshop.general.controllers;
 
 import com.example.demoeshop.general.dto.ProductFilter;
 import com.example.demoeshop.general.model.Product;
-import com.example.demoeshop.general.services.ProductInventoryService;
-import com.example.demoeshop.general.services.ProductPricingService;
-import com.example.demoeshop.general.services.ProductReviewService;
-import com.example.demoeshop.general.services.ProductService;
+import com.example.demoeshop.general.services.product.ProductService;
+import com.example.demoeshop.general.services.product.ProductInventoryService;
+import com.example.demoeshop.general.services.product.ProductPricingService;
+import com.example.demoeshop.general.services.product.ProductReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,16 +70,7 @@ public class ProductController {
 
     @PostMapping("/filter")
     public List<Product> filterProducts(@RequestBody ProductFilter filter) {
-        return productService.filterProducts(
-                filter.getCategory(),
-                filter.getBrand(),
-                filter.getMinPrice(),
-                filter.getMaxPrice(),
-                filter.getMinRating(),
-                filter.getIsActive(),
-                filter.getMinStock(),
-                filter.getDiscount()
-        );
+        return productService.filterProducts(filter);
     }
 
     @PostMapping("/{id}/adjustStock")

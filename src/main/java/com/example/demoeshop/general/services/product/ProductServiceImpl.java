@@ -1,7 +1,9 @@
-package com.example.demoeshop.general.services;
+package com.example.demoeshop.general.services.product;
 
+import com.example.demoeshop.general.dto.ProductFilter;
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.repositories.ProductRepository;
+import com.example.demoeshop.general.services.specification.ProductSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -11,21 +13,25 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
+    @Override
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
+    @Override
     public Optional<Product> getProductById(Long id) {
         return productRepository.findById(id);
     }
 
+    @Override
     public Product addProduct(Product product) {
         return productRepository.save(product);
     }
 
+    @Override
     public Product updateProduct(Long id, Product productDetails) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
@@ -42,22 +48,22 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 
-    public List<Product> filterProducts(
-            String category, String brand, Double minPrice, Double maxPrice,
-            Double minRating, Boolean isActive, Integer minStock, Double discount) {
+    @Override
+    public List<Product> filterProducts(ProductFilter productFilter) {
 
-        Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(category))
-                .and(ProductSpecification.hasBrand(brand))
-                .and(ProductSpecification.hasMinPrice(minPrice))
-                .and(ProductSpecification.hasMaxPrice(maxPrice))
-                .and(ProductSpecification.hasMinRating(minRating))
-                .and(ProductSpecification.isActive(isActive))
-                .and(ProductSpecification.hasStockGreaterThan(minStock))
-                .and(ProductSpecification.hasDiscount(discount));
+        Specification<Product> spec = Specification.where(ProductSpecification.hasCategory(productFilter.getCategory()))
+                .and(ProductSpecification.hasBrand(productFilter.getBrand()))
+                .and(ProductSpecification.hasMinPrice(productFilter.getMinPrice()))
+                .and(ProductSpecification.hasMaxPrice(productFilter.getMaxPrice()))
+                .and(ProductSpecification.hasMinRating(productFilter.getMinRating()))
+                .and(ProductSpecification.isActive(productFilter.getIsActive()))
+                .and(ProductSpecification.hasStockGreaterThan(productFilter.getMinStock()))
+                .and(ProductSpecification.hasDiscount(productFilter.getDiscount()));
 
         return productRepository.findAll(spec);
     }

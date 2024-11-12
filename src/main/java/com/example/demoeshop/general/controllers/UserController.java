@@ -1,7 +1,7 @@
 package com.example.demoeshop.general.controllers;
 
 import com.example.demoeshop.general.model.User;
-import com.example.demoeshop.general.services.UserService;
+import com.example.demoeshop.general.services.user.UserServiceImp;
 import com.example.demoeshop.shared.LoginRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImp userService;
     @PostMapping("/register")
     @Operation(
             summary = "Registers a new user",
