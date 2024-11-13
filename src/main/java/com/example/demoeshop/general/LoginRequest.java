@@ -1,4 +1,4 @@
-package com.example.demoeshop.shared;
+package com.example.demoeshop.general;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

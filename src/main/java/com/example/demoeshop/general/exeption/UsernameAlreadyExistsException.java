@@ -1,4 +1,4 @@
-package com.example.demoeshop.shared.exeption;
+package com.example.demoeshop.general.exeption;
 
 public class UsernameAlreadyExistsException extends RuntimeException {
     public UsernameAlreadyExistsException(String message) {

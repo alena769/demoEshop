@@ -2,9 +2,9 @@ package com.example.demoeshop.general.services.user;
 
 import com.example.demoeshop.general.model.User;
 import com.example.demoeshop.general.repositories.UserRepository;
-import com.example.demoeshop.shared.LoginRequest;
-import com.example.demoeshop.shared.exeption.AuthenticationException;
-import com.example.demoeshop.shared.exeption.UsernameAlreadyExistsException;
+import com.example.demoeshop.general.LoginRequest;
+import com.example.demoeshop.general.exeption.AuthenticationException;
+import com.example.demoeshop.general.exeption.UsernameAlreadyExistsException;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

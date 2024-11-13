@@ -1,4 +1,4 @@
-package com.example.demoeshop.shared.security;
+package com.example.demoeshop.general.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

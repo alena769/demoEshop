@@ -1,6 +1,7 @@
 package com.example.demoeshop.general.dto;
 
 import com.example.demoeshop.general.model.Product;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@Schema(hidden = true)
 public class ProductDTO implements Serializable {
 
     @Serial

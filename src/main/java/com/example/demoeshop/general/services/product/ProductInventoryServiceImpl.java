@@ -2,7 +2,7 @@ package com.example.demoeshop.general.services.product;
 
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.repositories.ProductRepository;
-import com.example.demoeshop.shared.exeption.ProductNotFoundException;
+import com.example.demoeshop.general.exeption.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

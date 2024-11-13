@@ -1,4 +1,4 @@
-package com.example.demoeshop.shared;
+package com.example.demoeshop.general;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

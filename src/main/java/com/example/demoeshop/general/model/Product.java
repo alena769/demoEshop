@@ -1,7 +1,8 @@
 package com.example.demoeshop.general.model;
 
-import com.example.demoeshop.shared.BaseEntity;
+import com.example.demoeshop.general.BaseEntity;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -9,8 +10,14 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 public class Product extends BaseEntity<Long> {
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String description;
+
+
     private String category;
     private String brand;
     private Double discount;
