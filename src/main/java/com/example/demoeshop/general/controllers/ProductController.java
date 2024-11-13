@@ -1,5 +1,6 @@
 package com.example.demoeshop.general.controllers;
 
+import com.example.demoeshop.general.dto.ProductDTO;
 import com.example.demoeshop.general.dto.ProductFilter;
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.services.product.ProductService;
@@ -80,7 +81,7 @@ public class ProductController {
     }
 
     @PostMapping("/{id}/applyDiscount")
-    public ResponseEntity<Product> applyDiscount(
+    public ResponseEntity<ProductDTO> applyDiscount(
             @PathVariable Long id,
             @RequestParam double discountAmount) {
 
@@ -88,11 +89,11 @@ public class ProductController {
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         productService.applyDiscount(product, discountAmount);
 
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(ProductDTO.from(product));
     }
 
     @PostMapping("/{id}/adjustInventory")
-    public ResponseEntity<Product> adjustInventory(
+    public ResponseEntity<ProductDTO> adjustInventory(
             @PathVariable Long id,
             @RequestParam int quantityChange) {
 
@@ -100,11 +101,11 @@ public class ProductController {
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         productService.adjustInventory(product, quantityChange);
 
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(ProductDTO.from(product));
     }
 
     @PostMapping("/{id}/addReview")
-    public ResponseEntity<Product> addRating(
+    public ResponseEntity<ProductDTO> addRating(
             @PathVariable Long id,
             @RequestParam double rating) {
 
@@ -112,11 +113,13 @@ public class ProductController {
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
         productService.addReview(product, rating);
 
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(ProductDTO.from(product));
     }
 
     @GetMapping("/{id}/rating")
-    public double getAverageRating(@PathVariable Long id) {
+    public double getAverageRating(
+            @PathVariable
+            Long id) {
         return productReviewService.getAverageRating(id);
     }
 }

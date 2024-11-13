@@ -25,9 +25,10 @@ public class UserController {
             summary = "Registers a new user",
             description = "This endpoint registers a new user"
     )
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        User savedUser = userService.registerUser(user);
-        return ResponseEntity.ok(savedUser);
+    public ResponseEntity<User> registerUser(
+            @RequestBody
+            User user) {
+        return ResponseEntity.ok(userService.registerUser(user));
     }
     @PostMapping("/login")
     @Operation(
@@ -35,7 +36,8 @@ public class UserController {
             description = "This endpoint verifies a user's username and password"
     )
     public ResponseEntity<String> loginUser(
-            @RequestBody LoginRequest loginRequest) {
+            @RequestBody
+            LoginRequest loginRequest) {
         return ResponseEntity.ok(userService.authenticate(loginRequest));
     }
 }
