@@ -13,6 +13,7 @@ public class ProductContext {
     private IProductPricingStrategy pricingStrategy;
     private IProductInventoryStrategy inventoryStrategy;
     private IProductReviewStrategy reviewStrategy;
+
     public void applyPricing(Product product) {
         if (pricingStrategy != null) {
             pricingStrategy.applyPrice(product);
