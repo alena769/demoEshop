@@ -4,6 +4,7 @@ import com.example.demoeshop.general.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "user")
 public class User extends BaseEntity<Long> {
 
     @NotNull

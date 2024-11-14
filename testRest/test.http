@@ -1,0 +1,94 @@
+### Add a new product
+###
+POST {{host}}/products
+Content-Type: application/json
+
+{
+  "name": "Sample Product",
+  "description": "A product for testing",
+  "category": "Electronics",
+  "brand": "TestBrand",
+  "price": 199.99,
+  "discount": 10.0,
+  "isActive": true,
+  "stock": 50,
+  "rating": 4.5
+}
+
+> {%
+    client.test("Product created successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    client.global.set("product-id", response.body.id);
+%}
+
+### Get product details
+###
+GET {{host}}/products/{{product-id}}
+Content-Type: application/json
+
+> ./scenarios/scripts/check-response-200.js
+
+### Update product stock
+###
+POST {{host}}/products/{{product-id}}/adjustStock
+Content-Type: application/json
+
+{
+  "quantityChange": 20
+}
+
+> ./scenarios/scripts/check-response-200.js
+
+### Apply discount to a product
+###
+POST {{host}}/products/{{product-id}}/applyDiscount
+Content-Type: application/json
+
+{
+  "discountAmount": 15.0
+}
+
+> ./scenarios/scripts/check-response-200.js
+
+### Add product review
+###
+POST {{host}}/products/{{product-id}}/addReview
+Content-Type: application/json
+
+{
+  "rating": 4.7
+}
+
+> ./scenarios/scripts/check-response-200.js
+
+### Filter products
+###
+POST {{host}}/api/products/filter
+Content-Type: application/json
+
+{
+  "category": "Electronics",
+  "minPrice": 100.0,
+  "maxPrice": 500.0
+}
+
+> ./scenarios/scripts/check-response-200.js
+
+### Delete a product
+###
+DELETE {{host}}/products/{{product-id}}
+Content-Type: application/json
+
+> {%
+    client.test("Product deleted successfully", function () {
+        client.assert(response.status === 204, "Response status is not 204");
+    });
+%}
+
+### Get all products
+###
+GET {{host}}/products
+Content-Type: application/json
+
+> ./scenarios/scripts/check-response-200.js
