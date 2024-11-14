@@ -21,7 +21,8 @@ public class UserServiceImp implements UserService {
         if(userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new UsernameAlreadyExistsException("Username '" + user.getUsername() + "' is already taken.");
         }
-        return userRepository.save(user);
+        userRepository.save(user);
+        return user;
     }
 
     @Override

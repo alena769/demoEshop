@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product addProduct(Product product) {
         log.debug("Adding a new product: {}", product);
-        Product savedProduct = productRepository.save(product);
+        var savedProduct = productRepository.save(product);
         log.info("Product added successfully with ID: {}", savedProduct.getId());
         return savedProduct;
     }
@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(Long id, Product productDetails) {
         log.debug("Updating product with ID: {}", id);
-        Product product = productRepository.findById(id)
+        var product = productRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("Product with ID {} not found", id);
                     return new RuntimeException("Product not found");

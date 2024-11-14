@@ -5,7 +5,6 @@ import com.example.demoeshop.general.dto.ProductFilter;
 import com.example.demoeshop.general.model.Product;
 import com.example.demoeshop.general.services.product.ProductService;
 import com.example.demoeshop.general.services.product.ProductInventoryService;
-import com.example.demoeshop.general.services.product.ProductPricingService;
 import com.example.demoeshop.general.services.product.ProductReviewService;
 import com.example.demoeshop.general.exeption.ProductNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;

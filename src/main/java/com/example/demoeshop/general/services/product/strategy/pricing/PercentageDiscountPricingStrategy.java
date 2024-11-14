@@ -1,7 +1,6 @@
 package com.example.demoeshop.general.services.product.strategy.pricing;
 
 import com.example.demoeshop.general.model.Product;
-import com.example.demoeshop.general.services.product.strategy.pricing.IProductPricingStrategy;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
