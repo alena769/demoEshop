@@ -2,6 +2,7 @@ package com.example.demoeshop.general.dto;
 
 import com.example.demoeshop.general.model.Product;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,14 +19,19 @@ public class ProductDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private Long id;
+    @NotNull
     private String name;
     private String description;
     private String category;
     private String brand;
     private Double discount;
+
+    @NotNull
     private Boolean isActive;
 
+    @NotNull
     private Integer stock;
+    @NotNull
     private Double price;
     private Double rating;
 

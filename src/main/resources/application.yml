@@ -22,6 +22,21 @@ spring:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: testotest1234343535832@gmail.com
+    password: abcdabcdabcd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  ai:
+    openai.api-key: ${OPEN_AI_KEY}
+
 springdoc:
   api-docs:
     path: /v3/api-docs

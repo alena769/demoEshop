@@ -15,17 +15,17 @@ public class Product extends BaseEntity<Long> {
 
     @NotNull
     private String name;
-
-    @NotNull
     private String description;
-
-
     private String category;
     private String brand;
     private Double discount;
+
+    @NotNull
     private Boolean isActive;
 
+    @NotNull
     private Integer stock;
+    @NotNull
     private Double price;
     private Double rating;
 }
